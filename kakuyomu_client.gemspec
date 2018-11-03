@@ -25,6 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "selenium-webdriver", "~> 3.14"
 
   spec.add_development_dependency "bundler", "~> 1.17"
+  spec.add_development_dependency "dotenv", "~> 2.5"
   spec.add_development_dependency "meowcop"
   spec.add_development_dependency "pry"
   spec.add_development_dependency "rake", "~> 10.0"
