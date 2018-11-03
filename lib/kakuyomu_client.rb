@@ -53,6 +53,28 @@ class KakuyomuClient
     raise Error, 'Creating episode failed: ', e.message
   end
 
+  def update_episode(work_id:, episode_id:, title:, body:)
+    raise NotLoggedInError unless logged_in?
+
+    driver.navigate.to("#{base_url}/my/works/#{work_id}/episodes/#{episode_id}")
+
+    title_input = driver.find_element(name: 'title')
+    title_input.clear
+    title_input.send_keys(title)
+
+    body_textarea = driver.find_element(name: 'body')
+    body_textarea.clear
+    body_textarea.send_keys(body)
+
+    driver.find_element(id: 'updateButton').click
+
+    Selenium::WebDriver::Wait.new.until do
+      driver.find_element(id: 'page-my-works-episodes-published')
+    end
+  rescue Selenium::WebDriver::Error::WebDriverError => e
+    raise Error, 'Updating episode failed: ', e.message
+  end
+
   def delete_episode(work_id:, episode_id:)
     raise NotLoggedInError unless logged_in?
 

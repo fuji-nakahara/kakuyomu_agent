@@ -26,4 +26,19 @@ RSpec.describe KakuyomuClient do
       end.not_to raise_error
     end
   end
+
+  describe '#update_episode' do
+    subject { client.update_episode(work_id: work_id, episode_id: episode_id, title: title, body: body) }
+
+    let(:work_id) { ENV.fetch('WORK_ID') }
+    let(:episode_id) { ENV.fetch('EPISODE_ID') }
+    let(:title) { '編集テスト' }
+    let(:body) { Time.now.to_s }
+
+    before do
+      client.login!(email: ENV.fetch('KAKUYOMU_EMAIL'), password: ENV.fetch('KAKUYOMU_PASSWORD'))
+    end
+
+    it { expect { subject }.not_to raise_error }
+  end
 end
