@@ -1,5 +1,6 @@
 RSpec.describe KakuyomuClient do
-  let(:client) { described_class.new }
+  let(:client) { described_class.new(driver: Selenium::WebDriver.for(:chrome, options: options)) }
+  let(:options) { Selenium::WebDriver::Chrome::Options.new(args: %w[headless disable-gpu]) }
 
   describe '#login!' do
     subject { client.login!(email: email, password: password) }
