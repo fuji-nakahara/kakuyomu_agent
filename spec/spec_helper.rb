@@ -1,4 +1,6 @@
 require "bundler/setup"
+require "dotenv/load"
+
 require "kakuyomu_client"
 
 RSpec.configure do |config|

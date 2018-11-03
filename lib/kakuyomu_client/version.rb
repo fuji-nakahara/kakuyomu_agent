@@ -1,3 +1,3 @@
-module KakuyomuClient
+class KakuyomuClient
   VERSION = "0.1.0"
 end

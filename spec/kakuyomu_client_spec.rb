@@ -1,9 +1,12 @@
 RSpec.describe KakuyomuClient do
-  it "has a version number" do
-    expect(KakuyomuClient::VERSION).not_to be nil
-  end
+  let(:client) { described_class.new }
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  describe '#login!' do
+    subject { client.login!(email: email, password: password) }
+
+    let(:email) { ENV.fetch('KAKUYOMU_EMAIL') }
+    let(:password) { ENV.fetch('KAKUYOMU_PASSWORD') }
+
+    it { is_expected.to be true }
   end
 end
