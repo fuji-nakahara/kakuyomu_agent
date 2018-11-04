@@ -49,7 +49,8 @@ class KakuyomuClient
       driver.find_element(id: 'page-my-works-episodes-published')
     end
 
-    UrlUtils.extract_episode_id(driver.current_url)
+    episode_id = UrlUtils.extract_episode_id(driver.current_url)
+    episode_url(work_id, episode_id)
   rescue Selenium::WebDriver::Error::WebDriverError => e
     raise Error, 'Creating episode failed: ', e.message
   end
@@ -72,6 +73,8 @@ class KakuyomuClient
     Selenium::WebDriver::Wait.new.until do
       driver.find_element(id: 'page-my-works-episodes-published')
     end
+
+    episode_url(work_id, episode_id)
   rescue Selenium::WebDriver::Error::WebDriverError => e
     raise Error, 'Updating episode failed: ', e.message
   end
@@ -88,6 +91,8 @@ class KakuyomuClient
     Selenium::WebDriver::Wait.new.until do
       driver.find_element(id: 'modelessMessage')
     end
+
+    true
   rescue Selenium::WebDriver::Error::WebDriverError => e
     raise Error, 'Deleting episode failed: ', e.message
   end

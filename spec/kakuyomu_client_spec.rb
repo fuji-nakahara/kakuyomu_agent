@@ -12,6 +12,11 @@ RSpec.describe KakuyomuClient do
   end
 
   describe '#create_episode and #delete_episode' do
+    subject do
+      episode_url = client.create_episode(work_id: work_id, title: title, body: body)
+      client.delete_episode(work_id: work_id, episode_id: KakuyomuClient::UrlUtils.extract_episode_id(episode_url))
+    end
+
     let(:work_id) { ENV.fetch('WORK_ID') }
     let(:title) { '投稿テスト' }
     let(:body) { Time.now.to_s }
@@ -21,10 +26,7 @@ RSpec.describe KakuyomuClient do
     end
 
     it 'creates and deletes episode without errors' do
-      expect do
-        episode_id = client.create_episode(work_id: work_id, title: title, body: body)
-        client.delete_episode(work_id: work_id, episode_id: episode_id)
-      end.not_to raise_error
+      expect { subject }.not_to raise_error
     end
   end
 
