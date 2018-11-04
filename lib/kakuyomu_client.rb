@@ -40,8 +40,13 @@ class KakuyomuClient
     raise NotLoggedInError unless logged_in?
 
     driver.navigate.to(new_episode_url(work_id))
-    driver.find_element(name: 'title').send_keys(title)
+
+    title_input = driver.find_element(name: 'title')
+    title_input.clear
+    title_input.send_keys(title)
+
     driver.find_element(name: 'body').send_keys(body)
+
     driver.find_element(id: 'reserveButton').click
     driver.find_element(id: 'reservationControl-footer').find_element(tag_name: 'button').click
 
