@@ -33,7 +33,7 @@ class KakuyomuClient
 
     @logged_in = true
   rescue Selenium::WebDriver::Error::WebDriverError => e
-    raise Error, 'Logging in failed: ', e.message
+    raise Error, "Logging in failed: #{e.message}"
   end
 
   def create_episode(work_id:, title:, body:)
@@ -52,7 +52,7 @@ class KakuyomuClient
     episode_id = UrlUtils.extract_episode_id(driver.current_url)
     episode_url(work_id, episode_id)
   rescue Selenium::WebDriver::Error::WebDriverError => e
-    raise Error, 'Creating episode failed: ', e.message
+    raise Error, "Creating episode failed: #{e.message}"
   end
 
   def update_episode(work_id:, episode_id:, title:, body:)
@@ -76,7 +76,7 @@ class KakuyomuClient
 
     episode_url(work_id, episode_id)
   rescue Selenium::WebDriver::Error::WebDriverError => e
-    raise Error, 'Updating episode failed: ', e.message
+    raise Error, "Updating episode failed: #{e.message}"
   end
 
   def delete_episode(work_id:, episode_id:)
@@ -94,7 +94,7 @@ class KakuyomuClient
 
     true
   rescue Selenium::WebDriver::Error::WebDriverError => e
-    raise Error, 'Deleting episode failed: ', e.message
+    raise Error, "Deleting episode failed: #{e.message}"
   end
 
   private
