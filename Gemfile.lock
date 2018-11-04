@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    kakuyomu_client (0.1.0)
+    kakuyomu_client (0.2.0)
       selenium-webdriver (~> 3.14)
 
 GEM
@@ -17,7 +17,7 @@ GEM
     jaro_winkler (1.5.1)
     meowcop (1.17.1)
       rubocop (>= 0.57.0)
-    method_source (0.9.0)
+    method_source (0.9.1)
     parallel (1.12.1)
     parser (2.5.3.0)
       ast (~> 2.4.0)
@@ -50,7 +50,7 @@ GEM
       unicode-display_width (~> 1.4.0)
     ruby-progressbar (1.10.0)
     rubyzip (1.2.2)
-    selenium-webdriver (3.14.1)
+    selenium-webdriver (3.141.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2, >= 1.2.2)
     unicode-display_width (1.4.0)
