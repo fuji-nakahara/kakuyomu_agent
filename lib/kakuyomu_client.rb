@@ -1,5 +1,6 @@
 require "selenium-webdriver"
 
+require_relative "kakuyomu_client/url_utils"
 require_relative "kakuyomu_client/version"
 
 class KakuyomuClient
@@ -48,7 +49,7 @@ class KakuyomuClient
       driver.find_element(id: 'page-my-works-episodes-published')
     end
 
-    driver.current_url[%r{episodes/(\d+)}, 1]
+    UrlUtils.extract_episode_id(driver.current_url)
   rescue Selenium::WebDriver::Error::WebDriverError => e
     raise Error, 'Creating episode failed: ', e.message
   end
