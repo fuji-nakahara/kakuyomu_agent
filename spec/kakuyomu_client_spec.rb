@@ -18,8 +18,8 @@ RSpec.describe KakuyomuClient do
     end
 
     let(:work_id) { ENV.fetch('WORK_ID') }
-    let(:title) { '投稿テスト' }
-    let(:body) { Time.now.to_s }
+    let(:title) { '投稿・削除テスト' }
+    let(:body) { 'このエピソードが削除されていなければ、KakuyomuClientの削除機能に問題が起きています。' }
 
     before do
       client.login!(email: ENV.fetch('KAKUYOMU_EMAIL'), password: ENV.fetch('KAKUYOMU_PASSWORD'))
@@ -36,7 +36,7 @@ RSpec.describe KakuyomuClient do
     let(:work_id) { ENV.fetch('WORK_ID') }
     let(:episode_id) { ENV.fetch('EPISODE_ID') }
     let(:title) { '編集テスト' }
-    let(:body) { Time.now.to_s }
+    let(:body) { "このエピソードは、KakuyomuClientによって#{Time.now.strftime('%Y年%m月%d日%H時%M分')}に編集されました。" }
 
     before do
       client.login!(email: ENV.fetch('KAKUYOMU_EMAIL'), password: ENV.fetch('KAKUYOMU_PASSWORD'))
