@@ -21,7 +21,7 @@ class KakuyomuClient
   end
 
   def login!(email:, password:)
-    driver.navigate.to("#{base_url}/login")
+    driver.navigate.to(login_url)
     driver.find_element(name: 'email_address').send_keys(email)
     driver.find_element(name: 'password').send_keys(password)
     driver.find_element(xpath: '//button[text()="ログイン"]').click
@@ -38,7 +38,7 @@ class KakuyomuClient
   def create_episode(work_id:, title:, body:)
     raise NotLoggedInError unless logged_in?
 
-    driver.navigate.to("#{base_url}/my/works/#{work_id}/episodes/new")
+    driver.navigate.to(new_episode_url(work_id))
     driver.find_element(name: 'title').send_keys(title)
     driver.find_element(name: 'body').send_keys(body)
     driver.find_element(id: 'reserveButton').click
@@ -56,7 +56,7 @@ class KakuyomuClient
   def update_episode(work_id:, episode_id:, title:, body:)
     raise NotLoggedInError unless logged_in?
 
-    driver.navigate.to("#{base_url}/my/works/#{work_id}/episodes/#{episode_id}")
+    driver.navigate.to(edit_episode_url(work_id, episode_id))
 
     title_input = driver.find_element(name: 'title')
     title_input.clear
@@ -78,7 +78,7 @@ class KakuyomuClient
   def delete_episode(work_id:, episode_id:)
     raise NotLoggedInError unless logged_in?
 
-    driver.navigate.to("#{base_url}/my/works/#{work_id}/episodes/#{episode_id}")
+    driver.navigate.to(edit_episode_url(work_id, episode_id))
     driver.find_element(id: 'contentMainHeader-toolButton').click
     driver.find_element(id: 'contentAsideHeader').find_element(xpath: '//*[contains(text(), "ツール")]').click
     driver.find_element(id: 'deleteEpisode').find_element(tag_name: 'button').click
@@ -89,5 +89,23 @@ class KakuyomuClient
     end
   rescue Selenium::WebDriver::Error::WebDriverError => e
     raise Error, 'Deleting episode failed: ', e.message
+  end
+
+  private
+
+  def login_url
+    "#{base_url}/login"
+  end
+
+  def episode_url(work_id, episode_id)
+    "#{base_url}/works/#{work_id}/episodes/#{episode_id}"
+  end
+
+  def new_episode_url(work_id)
+    "#{base_url}/my/works/#{work_id}/episodes/new"
+  end
+
+  def edit_episode_url(work_id, episode_id)
+    "#{base_url}/my/works/#{work_id}/episodes/#{episode_id}"
   end
 end
