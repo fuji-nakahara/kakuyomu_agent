@@ -23,18 +23,22 @@ Or install it yourself as:
 ```ruby
 require 'kakuyomu_client'
 
-WORK_ID = 1234567890123456789 # URLから取得した小説ID https://kakuyomu.jp/works/#{WORK_ID}
-
 client = KakuyomuClient.new
 
+# ログイン
+client.login!(email: YOUR_EMAIL, password: YOUR_PASSWORD) 
+
+# 小説の URL から work_id を抽出
+work_id = UrlUtils.extract_work_id('https://kakuyomu.jp/works/1234567890123456789') # => 1234567890123456789
+
 # エピソードを執筆
-episode_id = client.create_episode(work_id: WORK_ID, title: 'タイトル', body: '本文')
+episode_id = client.create_episode(work_id: work_id, title: 'タイトル', body: '本文')
 
 # エピソードを編集
-client.update_episode(work_id: WORK_ID, episode_id: episode_id, title: '新しいタイトル', body: '新しい本文')
+client.update_episode(work_id: work_id, episode_id: episode_id, title: '新しいタイトル', body: '新しい本文')
 
 # エピソードを削除
-client.delete_episode(work_id: WORK_ID, episode_id: episode_id) 
+client.delete_episode(work_id: work_id, episode_id: episode_id) 
 ```
 
 ## Development
