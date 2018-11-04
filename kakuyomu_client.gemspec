@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Fuji Nakahara"]
   spec.email         = ["fujinakahara2032@gmail.com"]
 
-  spec.summary       = "Client interface for kakuyomu.jp to automate episode management"
+  spec.summary       = "Client interface for Kakuyomu to automate episode management"
   spec.homepage      = "https://github.com/fuji-nakahara/kakuyomu_client"
   spec.license       = "MIT"
 

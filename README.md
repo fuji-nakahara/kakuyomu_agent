@@ -1,6 +1,6 @@
 # KakuyomuClient
 
-Client interface for kakuyomu.jp to automate episode management.
+Client interface for [Kakuyomu](https://kakuyomu.jp/) to automate episode management.
 
 ## Installation
 
