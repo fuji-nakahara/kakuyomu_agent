@@ -1,7 +1,7 @@
-require "selenium-webdriver"
+require 'selenium-webdriver'
 
-require_relative "kakuyomu_agent/url_utils"
-require_relative "kakuyomu_agent/version"
+require_relative 'kakuyomu_agent/url_utils'
+require_relative 'kakuyomu_agent/version'
 
 class KakuyomuAgent
   Error            = Class.new(StandardError)
