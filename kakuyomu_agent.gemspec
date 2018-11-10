@@ -1,16 +1,16 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "kakuyomu_client/version"
+require "kakuyomu_agent/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "kakuyomu_client"
-  spec.version       = KakuyomuClient::VERSION
+  spec.name          = "kakuyomu_agent"
+  spec.version       = KakuyomuAgent::VERSION
   spec.authors       = ["Fuji Nakahara"]
   spec.email         = ["fujinakahara2032@gmail.com"]
 
-  spec.summary       = "Client interface for Kakuyomu to automate episode management"
-  spec.homepage      = "https://github.com/fuji-nakahara/kakuyomu_client"
+  spec.summary       = "Selenium script for Kakuyomu episode management"
+  spec.homepage      = "https://github.com/fuji-nakahara/kakuyomu_agent"
   spec.license       = "MIT"
 
   # Specify which files should be added to the gem when it is released.

@@ -1,9 +1,9 @@
 require "selenium-webdriver"
 
-require_relative "kakuyomu_client/url_utils"
-require_relative "kakuyomu_client/version"
+require_relative "kakuyomu_agent/url_utils"
+require_relative "kakuyomu_agent/version"
 
-class KakuyomuClient
+class KakuyomuAgent
   Error            = Class.new(StandardError)
   NotLoggedInError = Class.new(Error)
 

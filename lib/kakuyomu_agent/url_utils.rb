@@ -1,4 +1,4 @@
-class KakuyomuClient
+class KakuyomuAgent
   module UrlUtils
     class << self
       def extract_work_id(url)

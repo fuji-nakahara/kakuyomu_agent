@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    kakuyomu_client (0.2.1)
+    kakuyomu_agent (0.1.0)
       selenium-webdriver (~> 3.14)
 
 GEM
@@ -61,7 +61,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.17)
   dotenv (~> 2.5)
-  kakuyomu_client!
+  kakuyomu_agent!
   meowcop
   pry
   rake (~> 10.0)

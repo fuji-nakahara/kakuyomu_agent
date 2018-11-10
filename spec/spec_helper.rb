@@ -1,7 +1,7 @@
 require "bundler/setup"
 require "dotenv/load"
 
-require "kakuyomu_client"
+require "kakuyomu_agent"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

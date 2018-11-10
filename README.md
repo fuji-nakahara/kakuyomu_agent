@@ -1,13 +1,13 @@
-# KakuyomuClient
+# KakuyomuAgent
 
-Client interface for [Kakuyomu](https://kakuyomu.jp/) to automate episode management.
+Selenium script for [Kakuyomu](https://kakuyomu.jp/) episode management.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'kakuyomu_client'
+gem 'kakuyomu_agent'
 ```
 
 And then execute:
@@ -16,29 +16,29 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install kakuyomu_client
+    $ gem install kakuyomu_agent
 
 ## Usage
 
 ```ruby
-require 'kakuyomu_client'
+require 'kakuyomu_agent'
 
-client = KakuyomuClient.new
+agent = KakuyomuAgent.new
 
 # ログイン
-client.login!(email: YOUR_EMAIL, password: YOUR_PASSWORD) 
+agent.login!(email: YOUR_EMAIL, password: YOUR_PASSWORD) 
 
 # 小説の URL から work_id を抽出
-work_id = UrlUtils.extract_work_id('https://kakuyomu.jp/works/1234567890123456789') # => 1234567890123456789
+work_id = KakuyomuAgent::UrlUtils.extract_work_id('https://kakuyomu.jp/works/1234567890123456789') # => 1234567890123456789
 
 # エピソードを執筆
-episode_id = client.create_episode(work_id: work_id, title: 'タイトル', body: '本文')
+episode_id = agent.create_episode(work_id: work_id, title: 'タイトル', body: '本文')
 
 # エピソードを編集
-client.update_episode(work_id: work_id, episode_id: episode_id, title: '新しいタイトル', body: '新しい本文')
+agent.update_episode(work_id: work_id, episode_id: episode_id, title: '新しいタイトル', body: '新しい本文')
 
 # エピソードを削除
-client.delete_episode(work_id: work_id, episode_id: episode_id) 
+agent.delete_episode(work_id: work_id, episode_id: episode_id) 
 ```
 
 ## Development
@@ -49,7 +49,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/fuji-nakahara/kakuyomu_client. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/fuji-nakahara/kakuyomu_agent. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
@@ -57,4 +57,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the KakuyomuClient project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/fuji-nakahara/kakuyomu_client/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the KakuyomuAgent project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/fuji-nakahara/kakuyomu_agent/blob/master/CODE_OF_CONDUCT.md).
