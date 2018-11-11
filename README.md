@@ -23,7 +23,7 @@ Or install it yourself as:
 ```ruby
 require 'kakuyomu_agent'
 
-agent = KakuyomuAgent.new
+agent = KakuyomuAgent.new(driver: Selenium::WebDriver.for(:chrome))
 
 # ログイン
 agent.login!(email: YOUR_EMAIL, password: YOUR_PASSWORD) 
