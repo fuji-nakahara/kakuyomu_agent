@@ -1,6 +1,7 @@
 require 'selenium-webdriver'
 
 require_relative 'kakuyomu_agent/url_helper'
+require_relative 'kakuyomu_agent/error'
 require_relative 'kakuyomu_agent/version'
 
 class KakuyomuAgent
