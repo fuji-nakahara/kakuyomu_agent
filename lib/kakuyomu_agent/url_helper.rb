@@ -1,5 +1,5 @@
 class KakuyomuAgent
-  module UrlUtils
+  module UrlHelper
     class << self
       def extract_work_id(url)
         url[%r{works/(\d+)}, 1]

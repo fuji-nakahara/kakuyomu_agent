@@ -14,7 +14,7 @@ RSpec.describe KakuyomuAgent do
   describe '#create_episode and #delete_episode' do
     subject do
       episode_url = agent.create_episode(work_id: work_id, title: title, body: body)
-      agent.delete_episode(work_id: work_id, episode_id: KakuyomuAgent::UrlUtils.extract_episode_id(episode_url))
+      agent.delete_episode(work_id: work_id, episode_id: KakuyomuAgent::UrlHelper.extract_episode_id(episode_url))
     end
 
     let(:work_id) { ENV.fetch('WORK_ID') }

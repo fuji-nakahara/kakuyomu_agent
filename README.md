@@ -29,10 +29,13 @@ agent = KakuyomuAgent.new
 agent.login!(email: YOUR_EMAIL, password: YOUR_PASSWORD) 
 
 # 小説の URL から work_id を抽出
-work_id = KakuyomuAgent::UrlUtils.extract_work_id('https://kakuyomu.jp/works/1234567890123456789') # => 1234567890123456789
+work_id = KakuyomuAgent::UrlHelper.extract_work_id('https://kakuyomu.jp/works/1234567890123456789') # => 1234567890123456789
 
 # エピソードを執筆
-episode_id = agent.create_episode(work_id: work_id, title: 'タイトル', body: '本文')
+episode_url = agent.create_episode(work_id: work_id, title: 'タイトル', body: '本文')
+
+# エピソードの URL から episode_id を抽出
+episode_id = KakuyomuAgent::UrlHelper.extract_episode_id(episode_url)
 
 # エピソードを編集
 agent.update_episode(work_id: work_id, episode_id: episode_id, title: '新しいタイトル', body: '新しい本文')
