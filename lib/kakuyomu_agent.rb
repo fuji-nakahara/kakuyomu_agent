@@ -35,9 +35,9 @@ class KakuyomuAgent
     Actions::CreateEpisode.new(self).run(work_id, title, body, date)
   end
 
-  def update_episode(work_id:, episode_id:, title:, body:)
+  def update_episode(work_id:, episode_id:, title:, body:, date: nil)
     raise NotLoggedInError unless logged_in?
-    Actions::UpdateEpisode.new(self).run(work_id, episode_id, title, body)
+    Actions::UpdateEpisode.new(self).run(work_id, episode_id, title, body, date)
   end
 
   def delete_episode(work_id:, episode_id:)
