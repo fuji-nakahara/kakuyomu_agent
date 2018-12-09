@@ -13,4 +13,9 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  def driver
+    options = Selenium::WebDriver::Chrome::Options.new(args: %w[headless disable-gpu])
+    Selenium::WebDriver.for(:chrome, options: options)
+  end
 end

@@ -1,6 +1,5 @@
 RSpec.describe KakuyomuAgent do
-  let(:agent) { described_class.new(driver: Selenium::WebDriver.for(:chrome, options: options)) }
-  let(:options) { Selenium::WebDriver::Chrome::Options.new(args: %w[headless disable-gpu]) }
+  let(:agent) { described_class.new(driver: driver) }
 
   describe '#login!' do
     subject { agent.login!(email: email, password: password) }
@@ -13,7 +12,7 @@ RSpec.describe KakuyomuAgent do
 
   describe '#create_episode and #delete_episode' do
     subject do
-      episode_url = agent.create_episode(work_id: work_id, title: title, body: body, date: date)
+      episode_url = agent.create_episode(work_id: work_id, title: title, body: body)
       agent.delete_episode(work_id: work_id, episode_id: KakuyomuAgent::UrlHelper.extract_episode_id(episode_url))
     end
 
@@ -25,20 +24,8 @@ RSpec.describe KakuyomuAgent do
       agent.login!(email: ENV.fetch('KAKUYOMU_EMAIL'), password: ENV.fetch('KAKUYOMU_PASSWORD'))
     end
 
-    context 'without date' do
-      let(:date) { nil }
-
-      it 'creates and deletes episode without errors' do
-        expect { subject }.not_to raise_error
-      end
-    end
-
-    context 'with future date' do
-      let(:date) { Time.now + 24 * 60 * 60 }
-
-      it 'creates and deletes reserved episode without errors' do
-        expect { subject }.not_to raise_error
-      end
+    it 'creates and deletes episode without errors' do
+      expect { subject }.not_to raise_error
     end
   end
 
@@ -55,5 +42,30 @@ RSpec.describe KakuyomuAgent do
     end
 
     it { expect { subject }.not_to raise_error }
+  end
+
+  describe '#create_episode and #update_episode with future date' do
+    subject do
+      episode_url = agent.create_episode(work_id: work_id, title: title, body: body, date: date)
+      @episode_id = KakuyomuAgent::UrlHelper.extract_episode_id(episode_url)
+      agent.update_episode(work_id: work_id, episode_id: @episode_id, title: title, body: body, date: date)
+    end
+
+    let(:work_id) { ENV.fetch('WORK_ID') }
+    let(:title) { '予約テスト' }
+    let(:body) { 'このエピソードが削除されていなければ、KakuyomuAgentの削除機能に問題が起きています。' }
+    let(:date) { Time.now + 60 * 60 * 24 }
+
+    before do
+      agent.login!(email: ENV.fetch('KAKUYOMU_EMAIL'), password: ENV.fetch('KAKUYOMU_PASSWORD'))
+    end
+
+    after do
+      agent.delete_episode(work_id: work_id, episode_id: @episode_id)
+    end
+
+    it 'creates and updates reserved episode without errors' do
+      expect { subject }.not_to raise_error
+    end
   end
 end
