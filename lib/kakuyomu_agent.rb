@@ -30,9 +30,9 @@ class KakuyomuAgent
     @logged_in = true
   end
 
-  def create_episode(work_id:, title:, body:)
+  def create_episode(work_id:, title:, body:, date: nil)
     raise NotLoggedInError unless logged_in?
-    Actions::CreateEpisode.new(self).run(work_id, title, body)
+    Actions::CreateEpisode.new(self).run(work_id, title, body, date)
   end
 
   def update_episode(work_id:, episode_id:, title:, body:)
