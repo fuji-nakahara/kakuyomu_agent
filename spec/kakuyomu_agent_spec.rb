@@ -35,7 +35,15 @@ RSpec.describe KakuyomuAgent do
     let(:work_id) { ENV.fetch('WORK_ID') }
     let(:episode_id) { ENV.fetch('EPISODE_ID') }
     let(:title) { '編集テスト' }
-    let(:body) { "このエピソードは、KakuyomuAgentによって#{Time.now.strftime('%Y年%m月%d日%H時%M分')}に編集されました。" }
+    let(:body) do
+      <<~EOS
+        機械の小説とは、機械について書かれた小説のことである。
+        機械による小説とは、機械によって書かれた小説のことである。
+        機械のための小説とは、機械の存続のために書かれた小説のことである。
+
+        |機械《ソフトウェア》とは、KakuyomuAgentのことである。
+      EOS
+    end
 
     before do
       agent.login!(email: ENV.fetch('KAKUYOMU_EMAIL'), password: ENV.fetch('KAKUYOMU_PASSWORD'))
