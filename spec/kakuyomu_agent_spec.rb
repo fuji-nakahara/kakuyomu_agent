@@ -1,5 +1,5 @@
 RSpec.describe KakuyomuAgent do
-  let(:agent) { described_class.new(driver: driver) }
+  let(:agent) { described_class.new }
 
   describe '#login!' do
     subject { agent.login!(email: email, password: password) }

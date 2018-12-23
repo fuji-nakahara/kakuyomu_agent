@@ -15,7 +15,7 @@ class KakuyomuAgent
 
   attr_reader :base_url, :driver
 
-  def initialize(base_url: BASE_URL, driver: Selenium::WebDriver.for(:chrome))
+  def initialize(base_url: BASE_URL, driver: Selenium::WebDriver.for(:chrome, options: Selenium::WebDriver::Chrome::Options.new.tap(&:headless!)))
     @base_url  = base_url
     @driver    = driver
     @logged_in = false
