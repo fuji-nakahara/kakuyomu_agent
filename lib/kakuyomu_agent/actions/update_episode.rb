@@ -29,7 +29,7 @@ class KakuyomuAgent
       def publish
         driver.find_element(id: 'updateButton').click
 
-        Selenium::WebDriver::Wait.new.until do
+        wait.until do
           driver.find_element(id: 'page-my-works-episodes-published')
         end
       end
@@ -46,7 +46,7 @@ class KakuyomuAgent
         end
         driver.find_element(id: 'reservationControl-footer').find_element(tag_name: 'button').click
 
-        Selenium::WebDriver::Wait.new.until do
+        wait.until do
           driver.find_element(id: 'modelessMessage')
         end
       end

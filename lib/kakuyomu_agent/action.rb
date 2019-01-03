@@ -5,8 +5,11 @@ class KakuyomuAgent
 
     def_delegators :@agent, :base_url, :driver
 
-    def initialize(agent)
+    attr_reader :wait
+
+    def initialize(agent, wait: Selenium::WebDriver::Wait.new)
       @agent = agent
+      @wait = wait
     end
 
     def run

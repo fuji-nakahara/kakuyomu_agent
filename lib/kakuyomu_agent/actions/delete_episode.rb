@@ -9,7 +9,7 @@ class KakuyomuAgent
         driver.find_element(id: 'deleteEpisode').find_element(tag_name: 'button').click
         driver.switch_to.alert.accept
 
-        Selenium::WebDriver::Wait.new.until do
+        wait.until do
           driver.find_element(id: 'modelessMessage')
         end
 

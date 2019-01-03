@@ -9,7 +9,7 @@ class KakuyomuAgent
 
         driver.find_element(xpath: '//button[text()="ログイン"]').click
 
-        Selenium::WebDriver::Wait.new.until do
+        wait.until do
           driver.find_element(id: 'page-my')
         end
       rescue Selenium::WebDriver::Error::WebDriverError => e
