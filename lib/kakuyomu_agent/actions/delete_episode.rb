@@ -5,7 +5,9 @@ class KakuyomuAgent
         driver.get(edit_episode_url(work_id, episode_id))
 
         driver.find_element(id: 'contentMainHeader-toolButton').click
+        sleep 1
         driver.find_element(id: 'contentAsideHeader').find_element(xpath: '//*[contains(text(), "ツール")]').click
+        sleep 1
         driver.find_element(id: 'deleteEpisode').find_element(tag_name: 'button').click
         driver.switch_to.alert.accept
 
