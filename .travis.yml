@@ -11,7 +11,7 @@ env:
     - secure: xiEpWd8ZpsPHUaR/pkaW4+X/WgrIwk6KFlqWJeKdcWVYgpZNa3T0AkR959AE5kCtm3KsHkl0TH6DgmGm2QKJaG7QdnTThHUF1j5MGuZG0IDMIfj4JybPC1OfAxF50y66DjrDViJilb/XuAU8AE+XOYf8LJTQ2zLHz7qvV7ZFm6v94cYreKio90HrNvLGoLFtlC5PUkrJ7nsdEVIvvLArlTsPmMUWc5ZN8eOpTPM1tFTr2sXbf6Sa7/6NzWKHNpuDJ2fZnwR5qHTojXXhxI64CXj4D846wPAz13LiIhQcdtCvt+B+YGHQMmjn3q+thjo+IBCvTeUw7uuoIc9Cfkl7hEauj5r3GUQ0Q00TNs6JLR2ZJ7EM/WPQ6FpvqN5hwmnq1+Rk3p3OCfEGqT1wPDcr0jvQFtTpFQAs2JdLQpNArXFcuLspCWtBjFcU5zgBMoLSWLfaUxtRH3MAP4ei0v6TNB+wPa/c3D//YWqyOBbru8vxFjCz63db7tfofQEQMBIwlEG3OYJpocz7o571IAqxzpPXtvXIYYRKI0ter6aGkUIoeGYNzvoWtDG7QkqRizVZw6hzq57ZqAnkzplML1yW5g7uZWTUfuqyFEptW05e1kRzloIKiCdWvG2q0ZVVYt4TZW2iuQGaaCE8x7GU06dgOWKnJ/WHkhGex9nKdIRzrsg=
 cache: bundler
 before_install:
-  - gem install bundler -v 1.17.1
+  - gem install bundler -v 2.0.2
 install:
   - bundle install --jobs=3 --retry=3
   # https://github.com/SeleniumHQ/selenium/blob/master/scripts/travis/install.sh#L4-L6
